@@ -1,0 +1,385 @@
+{
+  "cases": [
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": []
+      },
+      "expectation": "valid",
+      "id": "valid/full-work-order",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": []
+      },
+      "expectation": "valid",
+      "id": "valid/minimal-work-order",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": []
+      },
+      "expectation": "valid",
+      "id": "valid/customer-message",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": []
+      },
+      "expectation": "valid",
+      "id": "valid/visit-null-notes",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "type_mismatch"
+        ],
+        "paths": [
+          "$.estimated_cost"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/type-mismatch-path",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "missing_required"
+        ],
+        "paths": [
+          "$.priority"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/missing-required",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "type_mismatch"
+        ],
+        "paths": [
+          "$.tags[1]"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/nested-array-path",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "pattern"
+        ],
+        "paths": [
+          "$.customer_id"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/pattern",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "enum"
+        ],
+        "paths": [
+          "$.channel"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/enum",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "extra_property"
+        ],
+        "paths": [
+          "$.zzz"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/extra-property",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "length"
+        ],
+        "paths": [
+          "$.title"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/min-length",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "range"
+        ],
+        "paths": [
+          "$.estimated_cost"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/range",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "type_mismatch"
+        ],
+        "paths": [
+          "$.technician_id"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/bool-not-integer",
+      "passed": true
+    },
+    {
+      "detail": {
+        "classes": [
+          "length"
+        ],
+        "paths": [
+          "$.tags[1]"
+        ]
+      },
+      "expectation": "invalid",
+      "id": "invalid/duplicate-tags",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "strip_code_fence"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/code-fence",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "fix_trailing_comma"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/trailing-comma",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "coerce $.estimated_cost: '149.50' -> number"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/stringly-number",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "coerce $.notify_customer: 'true' -> boolean"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/stringly-bool",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "coerce $.technician_id: '42' -> integer"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/stringly-integer",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "unwrap double-encoded blob"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/double-encoded-blob",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "unwrap wrapper key 'result'"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/wrapper-key",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 1,
+        "repairs": [
+          "strip_code_fence",
+          "coerce $.estimated_cost: '99' -> number"
+        ]
+      },
+      "expectation": "repaired",
+      "id": "repaired/combined",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 3,
+        "errors": [
+          {
+            "error_class": "length",
+            "keyword": "minLength",
+            "message": "string length 1 < minimum 3",
+            "path": "$.title"
+          },
+          {
+            "error_class": "enum",
+            "keyword": "enum",
+            "message": "value 'whenever' not in enum ['low', 'medium', 'high', 'urgent']",
+            "path": "$.priority"
+          }
+        ]
+      },
+      "expectation": "unfixable",
+      "id": "unfixable/missing-plus-enum",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 3,
+        "errors": [
+          {
+            "error_class": "json_parse",
+            "keyword": "parse",
+            "message": "output is not valid JSON",
+            "path": "$"
+          }
+        ]
+      },
+      "expectation": "unfixable",
+      "id": "unfixable/not-json",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 3,
+        "errors": [
+          {
+            "error_class": "enum",
+            "keyword": "enum",
+            "message": "value 'carrier-pigeon' not in enum ['sms', 'email', 'push']",
+            "path": "$.channel"
+          }
+        ]
+      },
+      "expectation": "unfixable",
+      "id": "unfixable/enum-only",
+      "passed": true
+    },
+    {
+      "detail": {
+        "attempts": 3,
+        "errors": [
+          {
+            "error_class": "extra_property",
+            "keyword": "additionalProperties",
+            "message": "additional property 'output' not allowed",
+            "path": "$.output"
+          }
+        ]
+      },
+      "expectation": "unfixable",
+      "id": "unfixable/non-json-wrapper",
+      "passed": true
+    }
+  ],
+  "deterministic": true,
+  "drift_check": {
+    "got": {
+      "by_schema": {
+        "create_work_order": 4,
+        "schedule_technician_visit": 1,
+        "send_customer_message": 1
+      },
+      "error_classes": {
+        "enum": 1,
+        "extra_property": 1,
+        "length": 1,
+        "missing_required": 1,
+        "pattern": 1
+      },
+      "fail_rate": 0.6667,
+      "failed": 4,
+      "field_failures": {
+        "$.channel": 1,
+        "$.priority": 1,
+        "$.title": 1,
+        "$.work_order_id": 1,
+        "$.zzz": 1
+      },
+      "pass_rate": 0.3333,
+      "passed": 2,
+      "schema_failures": {
+        "create_work_order": 2,
+        "schedule_technician_visit": 1,
+        "send_customer_message": 1
+      },
+      "top_error_classes": [
+        "enum",
+        "extra_property",
+        "length",
+        "missing_required",
+        "pattern"
+      ],
+      "top_fields": [
+        "$.channel",
+        "$.priority",
+        "$.title",
+        "$.work_order_id",
+        "$.zzz"
+      ],
+      "total": 6
+    },
+    "passed": true
+  },
+  "max_attempts": 3,
+  "summary": {
+    "failed": 0,
+    "passed": 27,
+    "total": 27
+  },
+  "tool": "structured-output-validator"
+}
